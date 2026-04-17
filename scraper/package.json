@@ -1,0 +1,13 @@
+{
+  "name": "mena-mh-scraper",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "push": "node push-to-sheets.js"
+  },
+  "dependencies": {
+    "apify-client": "^2.9.3",
+    "dotenv": "^16.4.5"
+  }
+}
