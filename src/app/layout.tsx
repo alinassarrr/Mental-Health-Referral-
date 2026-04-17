@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { I18nProvider } from '@/lib/i18n'
-import Navbar from '@/components/Navbar'
+import TopBar from '@/components/TopBar'
+import BottomNav from '@/components/BottomNav'
 import HotlineBar from '@/components/HotlineBar'
 import { getHotlines } from '@/lib/sheets'
 
 export const metadata: Metadata = {
-  title: 'MENA Mental Health Resources',
+  title: 'Mental Health MENA',
   description: 'Find verified mental health NGOs, helplines, and clinics across 17 MENA countries.',
 }
 
@@ -16,16 +17,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" dir="ltr">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-gray-50 text-gray-900 min-h-screen">
+      <body className="bg-warm-50 text-gray-900 min-h-screen">
         <I18nProvider>
           <HotlineBar hotlines={hotlines} />
-          <Navbar />
-          <main>{children}</main>
+          <TopBar />
+          <main className="pb-safe">{children}</main>
+          <BottomNav />
         </I18nProvider>
       </body>
     </html>
