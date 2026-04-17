@@ -6,7 +6,7 @@ export default function Footer() {
           You are not alone.
         </p>
         <p className="text-sm text-gray-400 leading-relaxed mb-6">
-          Reaching out is the bravest thing you can do. Help exists — and it&apos;s closer than you think.
+          Reaching out is the bravest thing you can do. Help exists, and it&apos;s closer than you think.
         </p>
         <div className="border-t border-gray-100 pt-5 text-xs text-gray-300 space-y-1">
           <p>
@@ -19,7 +19,7 @@ export default function Footer() {
             >
               Farah Hijazi
             </a>
-            {' '}— because everyone in MENA deserves access to mental health support.
+{' '}because everyone in MENA deserves access to mental health support.
           </p>
           <p>Data sourced from public listings. Always verify before use.</p>
         </div>
