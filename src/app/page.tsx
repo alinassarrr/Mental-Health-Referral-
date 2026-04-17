@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import { getResources, getHotlines } from '@/lib/sheets'
 import { MENA_COUNTRIES, countryToSlug } from '@/lib/countries'
-import CrisisDisclaimer from '@/components/CrisisDisclaimer'
-
 export const revalidate = 3600
 
 export default async function HomePage() {
@@ -52,11 +50,6 @@ export default async function HomePage() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Crisis bar */}
-      <section className="px-4 mt-6 max-w-lg mx-auto">
-        <CrisisDisclaimer />
       </section>
 
       {/* Countries */}

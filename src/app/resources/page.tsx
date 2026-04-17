@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 import { getResources } from '@/lib/sheets'
 import ResourceGrid from '@/components/ResourceGrid'
-import CrisisDisclaimer from '@/components/CrisisDisclaimer'
 import Footer from '@/components/Footer'
 
 export const revalidate = 60
@@ -16,7 +15,6 @@ export default async function ResourcesPage() {
           {resources.length} resources across 17 MENA countries
         </p>
       </div>
-      <CrisisDisclaimer />
       <div className="mt-6">
         <Suspense fallback={<div className="h-32 flex items-center justify-center text-gray-400 text-sm">Loading…</div>}>
           <ResourceGrid resources={resources} />

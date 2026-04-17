@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getResources, getResourceById } from '@/lib/sheets'
 import MapEmbed from '@/components/MapEmbed'
-import CrisisDisclaimer from '@/components/CrisisDisclaimer'
 import Footer from '@/components/Footer'
 
 export const revalidate = 3600
@@ -34,7 +33,6 @@ export default async function ResourceDetailPage({
       <Link href="/resources" className="text-teal-600 text-sm hover:underline mb-4 block">
         ← Back to Resources
       </Link>
-      <CrisisDisclaimer />
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mt-6">
         <div className="flex items-start justify-between gap-4 mb-4">
           <h1 className="text-2xl font-bold text-gray-900">{resource.name}</h1>

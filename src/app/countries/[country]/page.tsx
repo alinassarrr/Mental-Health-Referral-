@@ -3,8 +3,6 @@ import { getResources, getHotlines } from '@/lib/sheets'
 import { MENA_COUNTRIES, slugToCountry } from '@/lib/countries'
 import ResourceCard from '@/components/ResourceCard'
 import Footer from '@/components/Footer'
-import CrisisDisclaimer from '@/components/CrisisDisclaimer'
-
 export const revalidate = 3600
 
 export async function generateStaticParams() {
@@ -40,7 +38,6 @@ export default async function CountryPage({
       <p className="text-gray-500 mb-6">
         {resources.length} resources · {hotlines.length} crisis hotlines
       </p>
-      <CrisisDisclaimer />
       {hotlines.length > 0 && (
         <section className="mt-8 mb-8">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">Crisis Hotlines</h2>

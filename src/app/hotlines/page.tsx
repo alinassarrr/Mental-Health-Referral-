@@ -1,8 +1,6 @@
 import { getHotlines } from '@/lib/sheets'
 import { MENA_COUNTRIES } from '@/lib/countries'
 import Footer from '@/components/Footer'
-import CrisisDisclaimer from '@/components/CrisisDisclaimer'
-
 export const revalidate = 3600
 
 export default async function HotlinesPage() {
@@ -18,7 +16,6 @@ export default async function HotlinesPage() {
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Crisis Hotlines</h1>
       <p className="text-sm text-gray-500 mb-6">Immediate support lines across the MENA region</p>
-      <CrisisDisclaimer />
       <div className="mt-6 flex flex-col gap-6">
         {Object.entries(byCountry).map(([country, lines]) => (
           <div key={country}>
