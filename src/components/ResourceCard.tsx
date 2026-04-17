@@ -1,13 +1,6 @@
 import Link from 'next/link'
 import type { Resource } from '@/lib/types'
 
-const PRICING_COLORS: Record<string, string> = {
-  Free: 'bg-green-100 text-green-700',
-  Sliding: 'bg-amber-100 text-amber-700',
-  Paid: 'bg-gray-100 text-gray-600',
-  Unknown: 'bg-gray-100 text-gray-400',
-}
-
 const TYPE_COLORS: Record<string, string> = {
   NGO: 'bg-emerald-100 text-emerald-700',
   Helpline: 'bg-red-100 text-red-600',
@@ -26,9 +19,6 @@ export default function ResourceCard({ resource }: { resource: Resource }) {
       <Link href={`/resources/${resource.id}`} className="block p-4">
         <div className="flex items-start justify-between gap-2 mb-2">
           <h3 className="font-bold text-gray-900 text-sm leading-snug">{resource.name}</h3>
-          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${PRICING_COLORS[resource.pricing] ?? PRICING_COLORS.Unknown}`}>
-            {resource.pricing || 'Unknown'}
-          </span>
         </div>
         <div className="flex gap-1.5 mb-3 flex-wrap">
           <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${TYPE_COLORS[resource.type] ?? 'bg-gray-100 text-gray-500'}`}>
