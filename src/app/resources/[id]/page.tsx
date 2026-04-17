@@ -3,6 +3,16 @@ import Link from 'next/link'
 import { getResources, getResourceById } from '@/lib/sheets'
 import MapEmbed from '@/components/MapEmbed'
 
+function parseHours(raw: string | undefined): string[] {
+  if (!raw) return []
+  try {
+    const parsed = JSON.parse(raw)
+    if (Array.isArray(parsed)) return parsed.map(String).filter(Boolean)
+  } catch {}
+  // Already a plain string — split by comma if it looks like a list
+  return raw.split(',').map(s => s.trim()).filter(Boolean)
+}
+
 export const revalidate = 3600
 
 export async function generateStaticParams() {
@@ -26,6 +36,8 @@ export default async function ResourceDetailPage({
   const languages = resource.languages
     ? resource.languages.split(',').map((l) => l.trim()).filter(Boolean)
     : []
+
+  const hours = parseHours(resource.hours)
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
@@ -68,8 +80,17 @@ export default async function ResourceDetailPage({
               🌐 Website
             </a>
           )}
-          {resource.hours && (
-            <div className="flex items-center gap-2 text-sm text-gray-600">🕐 {resource.hours}</div>
+          {hours.length > 0 && (
+            <div className="text-sm text-gray-600">
+              <span className="mr-1">🕐</span>
+              {hours.length === 1 ? (
+                hours[0]
+              ) : (
+                <ul className="mt-1 space-y-0.5 list-none">
+                  {hours.map((h, i) => <li key={i} className="text-xs">{h}</li>)}
+                </ul>
+              )}
+            </div>
           )}
         </div>
         {resource.address && <div className="mb-4 text-sm text-gray-600">📍 {resource.address}</div>}

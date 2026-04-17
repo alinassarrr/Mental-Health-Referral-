@@ -56,6 +56,15 @@ function toCsvRow(obj) {
     .join(',')
 }
 
+function parseHours(raw = '') {
+  if (!raw) return ''
+  try {
+    const parsed = JSON.parse(raw)
+    if (Array.isArray(parsed)) return parsed.join(', ')
+  } catch {}
+  return raw.replace(/[\[\]"]/g, '').trim()
+}
+
 const today = new Date().toISOString().split('T')[0]
 
 const raw = readFileSync('./candidates.csv', 'utf-8')
@@ -92,7 +101,7 @@ const resources = candidates
       session_type: 'Unknown',
       pricing: 'Unknown',
       stakeholders: '',
-      hours: c.hours ? c.hours.replace(/[\[\]"]/g, '') : '',
+      hours: parseHours(c.hours),
       verified: 'FALSE',
       date_added: today,
     }
