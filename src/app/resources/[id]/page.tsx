@@ -6,11 +6,26 @@ import HoursDisplay from '@/components/HoursDisplay'
 
 function parseHours(raw: string | undefined): string[] {
   if (!raw) return []
+
+  // Proper JSON array of strings or {day, hours} objects
   try {
     const parsed = JSON.parse(raw)
-    if (Array.isArray(parsed)) return parsed.map(String).filter(Boolean)
+    if (Array.isArray(parsed)) {
+      return parsed.flatMap(item => {
+        if (typeof item === 'string') return [item]
+        if (item && typeof item === 'object' && 'day' in item && 'hours' in item)
+          return [`${item.day}: ${item.hours}`]
+        return []
+      }).filter(Boolean)
+    }
   } catch {}
-  // Already a plain string — split by comma if it looks like a list
+
+  // Broken stringified objects: {day:Monday\nhours:8:30 AM to 4:30 PM}
+  const objMatches = [...raw.matchAll(/\{day:([^\n,}]+)[\s\S]*?hours:([^}]+)\}/gi)]
+  if (objMatches.length > 0)
+    return objMatches.map(m => `${m[1].trim()}: ${m[2].trim()}`)
+
+  // Plain comma-separated
   return raw.split(',').map(s => s.trim()).filter(Boolean)
 }
 
