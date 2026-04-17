@@ -1,103 +1,69 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { getResources, getHotlines } from '@/lib/sheets'
+import { MENA_COUNTRIES, countryToSlug } from '@/lib/countries'
+import Footer from '@/components/Footer'
+import CrisisDisclaimer from '@/components/CrisisDisclaimer'
 
-export default function Home() {
+export const revalidate = 3600
+
+export default async function HomePage() {
+  const [resources, hotlines] = await Promise.all([getResources(), getHotlines()])
+
+  const countryCounts = MENA_COUNTRIES.reduce<Record<string, number>>((acc, c) => {
+    acc[c] = resources.filter((r) => r.country === c).length
+    return acc
+  }, {})
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="max-w-5xl mx-auto px-4 py-12">
+      <section className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-teal-700 mb-4">
+          Mental Health Resources Across MENA
+        </h1>
+        <p className="text-gray-500 text-lg max-w-xl mx-auto mb-6">
+          Find verified mental health support in your country — NGOs, helplines, and clinics.
+        </p>
+        <Link
+          href="/resources"
+          className="inline-block bg-teal-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-teal-700 transition-colors"
+        >
+          Browse All Resources
+        </Link>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="grid grid-cols-3 gap-4 mb-12">
+        {[
+          { label: 'Resources Listed', value: resources.length },
+          { label: 'Countries Covered', value: MENA_COUNTRIES.length },
+          { label: 'Crisis Hotlines', value: hotlines.length },
+        ].map(({ label, value }) => (
+          <div key={label} className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
+            <div className="text-3xl font-bold text-teal-600">{value}</div>
+            <div className="text-sm text-gray-500 mt-1">{label}</div>
+          </div>
+        ))}
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">Browse by Country</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {MENA_COUNTRIES.map((country) => (
+            <Link
+              key={country}
+              href={`/countries/${countryToSlug(country)}`}
+              className="bg-white border border-gray-100 rounded-xl p-4 hover:shadow-md transition-shadow text-center"
+            >
+              <div className="font-medium text-gray-800 text-sm">{country}</div>
+              <div className="text-xs text-teal-600 mt-1">
+                {countryCounts[country] ?? 0} resources
+              </div>
+            </Link>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <CrisisDisclaimer />
+      <Footer />
     </div>
-  );
+  )
 }
