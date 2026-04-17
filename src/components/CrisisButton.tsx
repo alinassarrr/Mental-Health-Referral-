@@ -28,7 +28,7 @@ export default function CrisisButton() {
       </div>
 
       {/* Button */}
-      <Link href="/hotlines" aria-label="Crisis help — view hotlines">
+      <Link href="/hotlines" aria-label="Crisis help - view hotlines">
         <span className="relative flex h-13 w-13">
           {/* Pulse ring */}
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-30" />
