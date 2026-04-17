@@ -1,7 +1,7 @@
 import Papa from 'papaparse'
 import type { Resource, Hotline } from './types'
 
-export const revalidate = 3600
+export const revalidate = 60
 
 export function parseResourcesCsv(csv: string): Resource[] {
   const { data } = Papa.parse<Resource>(csv, {
@@ -24,7 +24,7 @@ export async function getResources(): Promise<Resource[]> {
   if (!url) return []
   try {
     const res = await fetch(url, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
       signal: AbortSignal.timeout(8000),
     })
     if (!res.ok) return []
@@ -40,7 +40,7 @@ export async function getHotlines(): Promise<Hotline[]> {
   if (!url) return []
   try {
     const res = await fetch(url, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
       signal: AbortSignal.timeout(8000),
     })
     if (!res.ok) return []
