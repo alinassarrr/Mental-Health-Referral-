@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getResources, getResourceById } from '@/lib/sheets'
 import MapEmbed from '@/components/MapEmbed'
+import HoursDisplay from '@/components/HoursDisplay'
 
 function parseHours(raw: string | undefined): string[] {
   if (!raw) return []
@@ -80,21 +81,14 @@ export default async function ResourceDetailPage({
               🌐 Website
             </a>
           )}
-          {hours.length > 0 && (
-            <div className="text-sm text-gray-600">
-              <span className="mr-1">🕐</span>
-              {hours.length === 1 ? (
-                hours[0]
-              ) : (
-                <ul className="mt-1 space-y-0.5 list-none">
-                  {hours.map((h, i) => <li key={i} className="text-xs">{h}</li>)}
-                </ul>
-              )}
-            </div>
-          )}
         </div>
         {resource.address && <div className="mb-4 text-sm text-gray-600">📍 {resource.address}</div>}
         <MapEmbed lat={resource.lat} lng={resource.lng} name={resource.name} />
+        {hours.length > 0 && (
+          <div className="mt-6">
+            <HoursDisplay hours={hours} />
+          </div>
+        )}
         {services.length > 0 && (
           <div className="mt-6">
             <h2 className="text-sm font-semibold text-gray-700 mb-2">Services</h2>
