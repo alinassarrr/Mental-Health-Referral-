@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { getResources } from '@/lib/sheets'
 import { MENA_COUNTRIES, countryToSlug } from '@/lib/countries'
-import Footer from '@/components/Footer'
 
 export const revalidate = 3600
 
@@ -27,7 +26,6 @@ export default async function CountriesPage() {
           </Link>
         ))}
       </div>
-      <Footer />
     </div>
   )
 }

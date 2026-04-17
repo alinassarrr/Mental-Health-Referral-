@@ -1,6 +1,5 @@
 import { getHotlines } from '@/lib/sheets'
 import { MENA_COUNTRIES } from '@/lib/countries'
-import Footer from '@/components/Footer'
 export const revalidate = 3600
 
 export default async function HotlinesPage() {
@@ -42,7 +41,6 @@ export default async function HotlinesPage() {
           <p className="text-gray-400 text-sm text-center py-8">No hotlines added yet.</p>
         )}
       </div>
-      <Footer />
     </div>
   )
 }

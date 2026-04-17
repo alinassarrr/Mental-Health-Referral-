@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getResources, getResourceById } from '@/lib/sheets'
 import MapEmbed from '@/components/MapEmbed'
-import Footer from '@/components/Footer'
 
 export const revalidate = 3600
 
@@ -102,7 +101,6 @@ export default async function ResourceDetailPage({
           </div>
         )}
       </div>
-      <Footer />
     </div>
   )
 }

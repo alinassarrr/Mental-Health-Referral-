@@ -5,6 +5,7 @@ import TopBar from '@/components/TopBar'
 import BottomNav from '@/components/BottomNav'
 import HotlineBar from '@/components/HotlineBar'
 import CrisisButton from '@/components/CrisisButton'
+import Footer from '@/components/Footer'
 import { getHotlines } from '@/lib/sheets'
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <HotlineBar hotlines={hotlines} />
           <TopBar />
           <main className="pb-safe">{children}</main>
+          <Footer />
           <CrisisButton />
           <BottomNav />
         </I18nProvider>

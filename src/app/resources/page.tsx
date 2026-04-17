@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 import { getResources } from '@/lib/sheets'
 import ResourceGrid from '@/components/ResourceGrid'
-import Footer from '@/components/Footer'
 
 export const revalidate = 60
 
@@ -20,7 +19,6 @@ export default async function ResourcesPage() {
           <ResourceGrid resources={resources} />
         </Suspense>
       </div>
-      <Footer />
     </div>
   )
 }

@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import { getResources, getHotlines } from '@/lib/sheets'
 import { MENA_COUNTRIES, slugToCountry } from '@/lib/countries'
 import ResourceCard from '@/components/ResourceCard'
-import Footer from '@/components/Footer'
 export const revalidate = 3600
 
 export async function generateStaticParams() {
@@ -66,7 +65,6 @@ export default async function CountryPage({
           </div>
         )}
       </section>
-      <Footer />
     </div>
   )
 }
