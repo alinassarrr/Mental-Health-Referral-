@@ -28,3 +28,16 @@ body {
 .pb-safe {
   padding-bottom: calc(4rem + env(safe-area-inset-bottom));
 }
+
+/* infinite marquee ticker */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
