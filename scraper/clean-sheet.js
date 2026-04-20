@@ -145,8 +145,8 @@ function fetchUrl(url) {
 }
 
 async function main() {
-  const url = process.env.RESOURCES_CSV_URL
-  if (!url) { console.error('Missing RESOURCES_CSV_URL in .env'); process.exit(1) }
+  const url = process.env.NEXT_PUBLIC_RESOURCES_CSV_URL
+  if (!url) { console.error('Missing NEXT_PUBLIC_RESOURCES_CSV_URL in .env'); process.exit(1) }
 
   console.log('Fetching sheet data...')
   const csv = await fetchUrl(url)

@@ -20,7 +20,7 @@ export function parseHotlinesCsv(csv: string): Hotline[] {
 }
 
 export async function getResources(): Promise<Resource[]> {
-  const url = process.env.RESOURCES_CSV_URL
+  const url = process.env.NEXT_PUBLIC_RESOURCES_CSV_URL
   if (!url) return []
   try {
     const res = await fetch(url, {
@@ -36,7 +36,7 @@ export async function getResources(): Promise<Resource[]> {
 }
 
 export async function getHotlines(): Promise<Hotline[]> {
-  const url = process.env.HOTLINES_CSV_URL
+  const url = process.env.NEXT_PUBLIC_HOTLINES_CSV_URL
   if (!url) return []
   try {
     const res = await fetch(url, {
