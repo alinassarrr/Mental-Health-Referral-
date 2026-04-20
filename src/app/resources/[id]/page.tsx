@@ -4,6 +4,16 @@ import { getResources, getResourceById } from '@/lib/sheets'
 import MapEmbed from '@/components/MapEmbed'
 import HoursDisplay from '@/components/HoursDisplay'
 
+function safeUrl(url: string | undefined): string | null {
+  if (!url) return null
+  try {
+    const { protocol } = new URL(url)
+    return protocol === 'https:' || protocol === 'http:' ? url : null
+  } catch {
+    return null
+  }
+}
+
 function parseHours(raw: string | undefined): string[] {
   if (!raw) return []
 
@@ -91,8 +101,8 @@ export default async function ResourceDetailPage({
               ✉️ {resource.email}
             </a>
           )}
-          {resource.website && (
-            <a href={resource.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-teal-600 hover:underline">
+          {safeUrl(resource.website) && (
+            <a href={safeUrl(resource.website)!} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-teal-600 hover:underline">
               🌐 Website
             </a>
           )}
