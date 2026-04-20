@@ -69,10 +69,10 @@ export default async function ResourceDetailPage({
         </div>
         <div className="flex gap-2 flex-wrap mb-4">
           <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">{resource.country}</span>
-          {resource.pricing && (
+          {resource.pricing && resource.pricing !== 'Unknown' && (
             <span className="text-xs bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full">{resource.pricing}</span>
           )}
-          {resource.session_type && (
+          {resource.session_type && resource.session_type !== 'Unknown' && (
             <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full">{resource.session_type}</span>
           )}
           {resource.verified === 'TRUE' && (

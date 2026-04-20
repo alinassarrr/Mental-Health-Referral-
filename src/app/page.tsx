@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { getResources, getHotlines } from '@/lib/sheets'
-import { MENA_COUNTRIES, countryToSlug } from '@/lib/countries'
+import { MENA_COUNTRIES, countryToSlug, COUNTRY_FLAGS } from '@/lib/countries'
 export const revalidate = 3600
 
 export default async function HomePage() {
@@ -65,8 +65,11 @@ export default async function HomePage() {
               href={`/countries/${countryToSlug(country)}`}
               className="bg-white rounded-2xl p-4 border border-green-50 hover:border-green-200 hover:shadow-md transition-all active:scale-95"
             >
-              <div className="font-semibold text-gray-900 text-sm">{country}</div>
-              <div className="text-xs text-green-600 mt-1 font-medium">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">{COUNTRY_FLAGS[country]}</span>
+                <div className="font-semibold text-gray-900 text-sm">{country}</div>
+              </div>
+              <div className="text-xs text-green-600 font-medium">
                 {counts[country] ?? 0} resources
               </div>
             </Link>
