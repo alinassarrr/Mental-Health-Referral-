@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { getResources, getHotlines } from '@/lib/sheets'
-import { MENA_COUNTRIES, slugToCountry } from '@/lib/countries'
+import { MENA_COUNTRIES, slugToCountry, COUNTRY_FLAGS } from '@/lib/countries'
 import ResourceCard from '@/components/ResourceCard'
 export const revalidate = 3600
 
@@ -33,7 +34,16 @@ export default async function CountryPage({
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-teal-700 mb-2">{countryName}</h1>
+      <Link href="/countries" className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-green-600 transition-colors mb-6">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" className="w-4 h-4">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        All countries
+      </Link>
+      <div className="flex items-center gap-3 mb-1">
+        <span className="text-4xl">{COUNTRY_FLAGS[countryName]}</span>
+        <h1 className="text-3xl font-bold text-gray-900">{countryName}</h1>
+      </div>
       <p className="text-gray-500 mb-6">
         {resources.length} resources · {hotlines.length} crisis hotlines
       </p>
