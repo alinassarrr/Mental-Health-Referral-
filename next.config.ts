@@ -14,7 +14,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com",
-      "frame-src https://www.google.com",                   // Google Maps embeds
+      "frame-src https://www.google.com https://maps.google.com",
       "connect-src 'self' https://docs.google.com",
     ].join('; '),
   },
