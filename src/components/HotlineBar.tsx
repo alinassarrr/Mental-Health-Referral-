@@ -24,10 +24,10 @@ export default function HotlineBar({ hotlines }: { hotlines: Hotline[] }) {
             <a
               key={i}
               href={`tel:${h.number}`}
-              className="inline-flex items-center gap-1.5 mx-6 hover:underline underline-offset-2 shrink-0"
+              className="inline-flex items-center gap-2 mx-8 shrink-0 group"
             >
-              <span className="text-white font-bold">{h.country}</span>
-              <span className="text-red-300 font-bold tracking-wide">{h.number}</span>
+              <span className="text-white/70 font-medium text-[11px] uppercase tracking-wider">{h.country}</span>
+              <span className="text-white font-extrabold text-sm tracking-wide group-hover:underline underline-offset-2">{h.number}</span>
             </a>
           ))}
         </div>
