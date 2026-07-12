@@ -9,7 +9,7 @@ const TYPES = ['NGO', 'Helpline', 'PHCC', 'Clinic', 'Hospital']
 const FLAGS: Record<string, string> = {
   Algeria: '🇩🇿', Egypt: '🇪🇬', Iran: '🇮🇷', Iraq: '🇮🇶',
   Palestine: '🇵🇸', Jordan: '🇯🇴', Kuwait: '🇰🇼', Lebanon: '🇱🇧',
-  Libya: '🇱🇾', Morocco: '🇲🇦', Oman: '🇴🇲', Qatar: '🇶🇦',
+  Libya: '🇱🇾', Morocco: '🇲🇦', Oman: '🇴🇲',
   'Saudi Arabia': '🇸🇦', Syria: '🇸🇾', Tunisia: '🇹🇳', UAE: '🇦🇪', Yemen: '🇾🇪',
 }
 
@@ -56,11 +56,10 @@ export default function FilterPanel({ filters, onChange }: {
         <p className="text-[11px] font-semibold uppercase tracking-widest text-stone-400 mb-2">Country</p>
         <button
           onClick={() => setOpen(v => !v)}
-          className={`flex items-center gap-2.5 w-full sm:w-64 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all duration-150 ${
-            open
+          className={`flex items-center gap-2.5 w-full sm:w-64 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all duration-150 ${open
               ? 'border-green-400 bg-white shadow-sm ring-2 ring-green-100'
               : 'border-[#ddd8d0] bg-white hover:border-green-300'
-          }`}
+            }`}
         >
           <span className="text-lg leading-none">
             {filters.country ? FLAGS[filters.country] : '🌍'}
@@ -112,11 +111,10 @@ export default function FilterPanel({ filters, onChange }: {
                   <button
                     key={c}
                     onClick={() => pick(c)}
-                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
-                      filters.country === c
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${filters.country === c
                         ? 'bg-green-50 text-green-800 font-semibold'
                         : 'text-gray-700 hover:bg-stone-50'
-                    }`}
+                      }`}
                   >
                     <span className="text-base">{FLAGS[c]}</span>
                     <span>{c}</span>
@@ -141,11 +139,10 @@ export default function FilterPanel({ filters, onChange }: {
               <button
                 key={tp}
                 onClick={() => onChange({ ...filters, type: tp === 'All' ? '' : tp })}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 active:scale-95 ${
-                  active
+                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 active:scale-95 ${active
                     ? 'bg-green-600 text-white shadow-sm shadow-green-200'
                     : 'bg-white border border-[#ddd8d0] text-gray-600 hover:border-green-300 hover:text-green-700'
-                }`}
+                  }`}
               >
                 {tp !== 'All' && <span className="text-sm leading-none">{TYPE_ICONS[tp]}</span>}
                 {tp}

@@ -25,7 +25,7 @@ function guessType(category = '', name = '') {
 
 function guessLanguages(country = '') {
   const maghreb = ['Algeria', 'Morocco', 'Tunisia', 'Libya']
-  const gulf = ['UAE', 'Saudi Arabia', 'Kuwait', 'Qatar', 'Oman', 'Bahrain']
+  const gulf = ['UAE', 'Saudi Arabia', 'Kuwait', 'Oman', 'Bahrain']
   if (maghreb.includes(country)) return 'ar,fr'
   if (gulf.includes(country)) return 'ar,en'
   return 'ar'
@@ -61,7 +61,7 @@ function parseHours(raw = '') {
   try {
     const parsed = JSON.parse(raw)
     if (Array.isArray(parsed)) return parsed.join(', ')
-  } catch {}
+  } catch { }
   return raw.replace(/[\[\]"]/g, '').trim()
 }
 
@@ -84,7 +84,7 @@ const resources = candidates
   .map(c => {
     const id = slugify(c.country, c.name)
     return {
-      id: seen.has(id) ? `${id}-${Math.random().toString(36).slice(2,5)}` : (seen.add(id), id),
+      id: seen.has(id) ? `${id}-${Math.random().toString(36).slice(2, 5)}` : (seen.add(id), id),
       name: c.name,
       country: c.country,
       type: guessType(c.category, c.name),

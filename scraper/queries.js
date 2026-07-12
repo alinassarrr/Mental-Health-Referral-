@@ -1,7 +1,7 @@
 // scraper/queries.js
 const COUNTRIES = [
   'Algeria', 'Egypt', 'Iran', 'Iraq', 'Palestine', 'Jordan', 'Kuwait',
-  'Lebanon', 'Libya', 'Morocco', 'Oman', 'Qatar', 'Saudi Arabia',
+  'Lebanon', 'Libya', 'Morocco', 'Oman', 'Saudi Arabia',
   'Syria', 'Tunisia', 'UAE', 'Yemen',
 ]
 
