@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { getResources } from '@/lib/sheets'
+import { MENA_COUNTRIES } from '@/lib/countries'
 import ResourceGrid from '@/components/ResourceGrid'
 
 export const revalidate = 60
@@ -11,7 +12,7 @@ export default async function ResourcesPage() {
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Mental Health Resources</h1>
         <p className="text-gray-500 text-sm mt-1">
-          {resources.length} resources across 17 MENA countries
+          {resources.length} resources across {MENA_COUNTRIES.length} MENA countries
         </p>
       </div>
       <div className="mt-6">

@@ -1,6 +1,6 @@
 export const MENA_COUNTRIES = [
   'Algeria', 'Egypt', 'Iran', 'Iraq', 'Palestine', 'Jordan', 'Kuwait',
-  'Lebanon', 'Libya', 'Morocco', 'Oman', 'Saudi Arabia',
+  'Lebanon', 'Libya', 'Morocco', 'Oman',
   'Syria', 'Tunisia', 'UAE', 'Yemen',
 ] as const
 
@@ -18,7 +18,6 @@ export const COUNTRY_FLAGS: Record<string, string> = {
   Libya: '🇱🇾',
   Morocco: '🇲🇦',
   Oman: '🇴🇲',
-  'Saudi Arabia': '🇸🇦',
   Syria: '🇸🇾',
   Tunisia: '🇹🇳',
   UAE: '🇦🇪',

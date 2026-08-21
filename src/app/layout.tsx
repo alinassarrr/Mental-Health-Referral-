@@ -7,10 +7,11 @@ import HotlineBar from '@/components/HotlineBar'
 import CrisisButton from '@/components/CrisisButton'
 import Footer from '@/components/Footer'
 import { getHotlines } from '@/lib/sheets'
+import { MENA_COUNTRIES } from '@/lib/countries'
 
 export const metadata: Metadata = {
   title: 'Mental Health MENA',
-  description: 'Find verified mental health NGOs, helplines, and clinics across 17 MENA countries.',
+  description: `Find verified mental health NGOs, helplines, and clinics across ${MENA_COUNTRIES.length} MENA countries.`,
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

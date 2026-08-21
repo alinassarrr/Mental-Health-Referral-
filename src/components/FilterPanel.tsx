@@ -10,7 +10,7 @@ const FLAGS: Record<string, string> = {
   Algeria: '🇩🇿', Egypt: '🇪🇬', Iran: '🇮🇷', Iraq: '🇮🇶',
   Palestine: '🇵🇸', Jordan: '🇯🇴', Kuwait: '🇰🇼', Lebanon: '🇱🇧',
   Libya: '🇱🇾', Morocco: '🇲🇦', Oman: '🇴🇲',
-  'Saudi Arabia': '🇸🇦', Syria: '🇸🇾', Tunisia: '🇹🇳', UAE: '🇦🇪', Yemen: '🇾🇪',
+  Syria: '🇸🇾', Tunisia: '🇹🇳', UAE: '🇦🇪', Yemen: '🇾🇪',
 }
 
 const TYPE_ICONS: Record<string, string> = {

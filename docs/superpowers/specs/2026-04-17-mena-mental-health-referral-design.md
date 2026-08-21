@@ -10,7 +10,7 @@ A fast, bilingual (EN/AR) public website that acts as a referral sheet — listi
 ---
 
 ## Countries
-Algeria, Egypt, Iran, Iraq, Palestine, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Saudi Arabia, Syria, Tunisia, UAE, Yemen
+Algeria, Egypt, Iran, Iraq, Palestine, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Syria, Tunisia, UAE, Yemen
 
 ---
 

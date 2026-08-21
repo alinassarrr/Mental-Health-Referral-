@@ -16,7 +16,7 @@ export default async function HomePage() {
       <section className="bg-gradient-to-b from-green-50 to-warm-50 px-4 pt-8 pb-10">
         <div className="max-w-lg mx-auto text-center">
           <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-            17 countries · Free to use
+            {MENA_COUNTRIES.length} countries · Free to use
           </span>
           <h1 className="text-3xl font-extrabold text-gray-900 leading-tight mb-3">
             Find mental health<br />support near you
@@ -41,7 +41,7 @@ export default async function HomePage() {
         <div className="max-w-lg mx-auto grid grid-cols-3 gap-3">
           {[
             { label: 'Resources', value: resources.length },
-            { label: 'Countries', value: 17 },
+            { label: 'Countries', value: MENA_COUNTRIES.length },
             { label: 'Hotlines', value: hotlines.length },
           ].map(({ label, value }) => (
             <div key={label} className="bg-white rounded-2xl p-3 text-center shadow-sm border border-green-50">

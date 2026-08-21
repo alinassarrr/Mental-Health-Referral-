@@ -25,7 +25,7 @@ function guessType(category = '', name = '') {
 
 function guessLanguages(country = '') {
   const maghreb = ['Algeria', 'Morocco', 'Tunisia', 'Libya']
-  const gulf = ['UAE', 'Saudi Arabia', 'Kuwait', 'Oman', 'Bahrain']
+  const gulf = ['UAE', 'Kuwait', 'Oman', 'Bahrain']
   if (maghreb.includes(country)) return 'ar,fr'
   if (gulf.includes(country)) return 'ar,en'
   return 'ar'

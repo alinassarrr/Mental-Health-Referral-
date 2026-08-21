@@ -125,7 +125,7 @@ git commit -m "feat: add scraper package"
 // scraper/queries.js
 const COUNTRIES = [
   'Algeria', 'Egypt', 'Iran', 'Iraq', 'Palestine', 'Jordan', 'Kuwait',
-  'Lebanon', 'Libya', 'Morocco', 'Oman', 'Saudi Arabia',
+  'Lebanon', 'Libya', 'Morocco', 'Oman',
   'Syria', 'Tunisia', 'UAE', 'Yemen',
 ]
 
@@ -520,7 +520,7 @@ export interface Hotline {
 // src/lib/countries.ts
 export const MENA_COUNTRIES = [
   'Algeria', 'Egypt', 'Iran', 'Iraq', 'Palestine', 'Jordan', 'Kuwait',
-  'Lebanon', 'Libya', 'Morocco', 'Oman', 'Saudi Arabia',
+  'Lebanon', 'Libya', 'Morocco', 'Oman',
   'Syria', 'Tunisia', 'UAE', 'Yemen',
 ] as const
 
@@ -2060,7 +2060,7 @@ export default function AboutPage() {
         <p>
           This directory lists mental health NGOs, helplines, and primary health care centers
           across 17 countries in the MENA region: Algeria, Egypt, Iran, Iraq, Palestine,
-          Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Saudi Arabia, Syria, Tunisia,
+          Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Syria, Tunisia,
           UAE, and Yemen.
         </p>
         <p className="mt-4">
